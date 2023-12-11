@@ -50,5 +50,15 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         });
     });
+    
+    // Add modal code here
+    const icons = document.querySelectorAll('.icon');
+
+    icons.forEach((icon, index) => {
+        icon.addEventListener('click', () => {
+            const modalId = `#portfolioModal${index + 1}`;
+            $(modalId).modal('show');
+        });
+    });
 
 });

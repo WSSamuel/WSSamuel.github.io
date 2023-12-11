@@ -5254,14 +5254,14 @@ textarea.form-control-lg {
   width: 1em;
   height: 1em;
   padding: 0.25em 0.25em;
-  color: #000;
-  background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+  color: #64a19d;
+  background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2365a19d'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
   border: 0;
   border-radius: 0.375rem;
   opacity: 0.5;
 }
 .btn-close:hover {
-  color: #000;
+  color: #64a19d;
   text-decoration: none;
   opacity: 0.75;
 }
@@ -11275,4 +11275,111 @@ body {
   top: 50%; /* Center the text vertically */
   left: 50%;
   transform: translate(-50%, -50%); /* Center the text both horizontally and vertically */
+}
+.services {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 50px 0;
+}
+.services .page-section-heading.bs-teal {
+  color: #64a19d;
+}
+.services h4 {
+  color: #64a19d; 
+  font-weight: bold;
+}
+/* Define the layout and alignment for the service cards */
+.cards {
+  display: inline-block;
+  width: 300px;
+  height: 400px;
+  margin: 20px;
+  vertical-align: top;
+  background-color: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease; /* Add transition for hover effect */
+}
+
+/* Add a hover effect to scale the card on hover */
+.cards:hover {
+  transform: scale(1.05); /* Scale up the card on hover */
+}
+
+/* Define the style and position for the service icons */
+.icon {
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+  background-color: transparent; /* Set background color to transparent */
+  border: 2px solid #64a19d; /* Add a border to create a ring */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Define the style and position for the service icons on hover */
+.cards:hover .icon {
+  background-color: #64a19d; /* Change background color on card hover */
+}
+
+/* Define the style and position for the service icons */
+.icon i {
+  font-size: 50px;
+  color: white;
+}
+
+/* Define the style and position for the service titles */
+.cards h4 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Define the style and position for the service descriptions */
+.cards p {
+  margin: 0 20px;
+}
+.portfolio-modal .modal-content {
+  background-color: #121212 !important; /* Replace with your desired background color */
+  color: #fff; /* Replace with your desired text color */
+}
+
+/* Customize modal title color */
+.portfolio-modal .portfolio-modal-title {
+  color: #64a19d !important; /* Replace with your desired title color */
+  font-weight: bold;
+  font-size: calc(1.275rem + 0.3vw);
+}
+
+/* Customize modal body text color */
+.portfolio-modal p {
+  color: #fff; /* Replace with your desired body text color */
+}
+
+.iconmodal {
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+  background-color: transparent;
+  border: 2px solid #64a19d;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Define the style and position for the service icons on hover */
+.iconmodal:hover {
+  background-color: #64a19d;
+}
+
+/* Define the style and position for the service icons */
+.iconmodal i {
+  font-size: 50px;
+  color: white;
+}
+.about-section h2.page-section-heading.bs-teal {
+  color: #65a19d;
 }
