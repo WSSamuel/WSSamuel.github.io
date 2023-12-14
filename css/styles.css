@@ -11384,10 +11384,14 @@ body {
   color: #65a19d;
 }
 .portfolio-item {
-  transition: opacity 0.3s ease-in-out; /* Optional: Add a transition effect for smoother visibility changes */
+  transition: opacity 0.3s ease-in-out;
 }
 
-.portfolio-item.d-none {
+.hidden {
   opacity: 0;
-  pointer-events: none; /* Optional: Disable interactions with hidden items */
+  pointer-events: none;
+}
+/* Add this to your CSS file */
+.portfolio-item.hidden {
+  display: none;
 }

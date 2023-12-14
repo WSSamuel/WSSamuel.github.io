@@ -76,13 +76,12 @@ window.addEventListener('DOMContentLoaded', event => {
                     const shouldShow = category === "all" || itemCategories.includes(category);
     
                     if (shouldShow) {
-                        item.classList.remove("d-none");
+                        item.classList.remove("hidden");
                     } else {
-                        item.classList.add("d-none");
+                        item.classList.add("hidden");
                     }
                 });
             });
         });
     });
-      
 });
