@@ -62,3 +62,23 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const portfolioItems = document.querySelectorAll(".portfolio-item");
+
+    filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const filterValue = button.getAttribute("data-filter");
+
+            portfolioItems.forEach((item) => {
+                const itemClasses = item.className.split(" ");
+
+                // Check if the item has the specific filter category
+                const shouldShowItem = filterValue === "all" || itemClasses.includes(filterValue);
+
+                // Set the display property based on whether the item should be shown
+                item.style.display = shouldShowItem ? "block" : "none";
+            });
+        });
+    });
+});
