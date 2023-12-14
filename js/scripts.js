@@ -70,31 +70,28 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener("click", () => {
             const filterValue = button.getAttribute("data-filter");
 
-            portfolioItems.forEach((item) => {
+            portfolioItems.forEach((item, index) => {
                 const itemClasses = item.className.split(" ");
                 const shouldShowItem = filterValue === "all" || itemClasses.includes(filterValue);
 
-                if (shouldShowItem) {
-                    item.style.opacity = 0; // Set initial opacity to 0 for fade-in effect
-
-                    // Set a timeout to update the opacity and display property
-                    setTimeout(() => {
-                        item.style.display = "block";
-                        item.style.opacity = 1; // Fade-in by setting opacity to 1
-                    }, 10); // Adjust the delay based on your preference
-                } else {
-                    // For items that should be hidden, apply fade-out effect
-                    item.style.opacity = 0;
-
-                    // Set a timeout to update the display property after the fade-out effect
-                    setTimeout(() => {
-                        item.style.display = "none";
-                    }, 300); // Adjust the duration for fade-out (in milliseconds)
-                }
+                // Toggle the hidden class based on the filter
+                item.classList.toggle("hidden", !shouldShowItem);
+                item.style.opacity = shouldShowItem ? 1 : 0;
+                item.style.pointerEvents = shouldShowItem ? "auto" : "none";
             });
         });
     });
 });
+
+
+
+
+
+
+
+
+
+
 
 
 
