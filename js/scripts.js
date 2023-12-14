@@ -109,27 +109,36 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function fadeElement(element, shouldShow) {
-        let opacity = shouldShow ? 1 : 0;
+        let opacity = shouldShow ? 0 : 1;
         let interval;
-
-        // Increase or decrease opacity smoothly
+    
+        // Increase or decrease opacity more rapidly
         interval = setInterval(() => {
             element.style.opacity = opacity.toFixed(2);
-            opacity = shouldShow ? opacity + 0.1 : opacity - 0.1;
-
-            if ((shouldShow && opacity > 1) || (!shouldShow && opacity < 0)) {
+            opacity = shouldShow ? opacity + 0.2 : opacity - 0.2; // Adjust the increment for faster fading
+    
+            if ((shouldShow && opacity >= 1) || (!shouldShow && opacity <= 0)) {
                 clearInterval(interval);
-
+    
                 // Set final opacity to avoid rounding issues
                 element.style.opacity = shouldShow ? 1 : 0;
-
+    
                 // Set pointer events based on visibility
                 element.style.pointerEvents = shouldShow ? "auto" : "none";
-
+    
                 // Toggle the 'hidden' class
                 element.classList.toggle("hidden", !shouldShow);
+    
+                // Set final height based on visibility (immediate for fade-in, delayed for fade-out)
+                if (shouldShow) {
+                    element.style.height = "auto";
+                } else {
+                    setTimeout(() => {
+                        element.style.height = "0";
+                    }, 300); // Adjust the delay based on your preference
+                }
             }
-        }, 50); // Adjust the interval based on your preference
+        }, 20); // Adjust the interval based on your preference for faster fading
     }
 });
 
