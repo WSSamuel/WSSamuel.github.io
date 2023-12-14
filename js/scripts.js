@@ -72,13 +72,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
             portfolioItems.forEach((item) => {
                 const itemClasses = item.className.split(" ");
-
-                // Check if the item has the specific filter category
                 const shouldShowItem = filterValue === "all" || itemClasses.includes(filterValue);
 
-                // Set the display property based on whether the item should be shown
-                item.style.display = shouldShowItem ? "block" : "none";
+                if (shouldShowItem) {
+                    item.style.opacity = 0; // Set initial opacity to 0 for fade-in effect
+
+                    // Set a timeout to update the opacity and display property
+                    setTimeout(() => {
+                        item.style.display = "block";
+                        item.style.opacity = 1; // Fade-in by setting opacity to 1
+                    }, 10); // Adjust the delay based on your preference
+                } else {
+                    // For items that should be hidden, apply fade-out effect
+                    item.style.opacity = 0;
+
+                    // Set a timeout to update the display property after the fade-out effect
+                    setTimeout(() => {
+                        item.style.display = "none";
+                    }, 300); // Adjust the duration for fade-out (in milliseconds)
+                }
             });
         });
     });
 });
+
+
+

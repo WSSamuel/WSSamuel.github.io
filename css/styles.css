@@ -11383,3 +11383,11 @@ body {
 .about-section h2.page-section-heading.bs-teal {
   color: #65a19d;
 }
+/* Add this to your existing CSS or in a separate style sheet */
+.portfolio-item {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.fade {
+  opacity: 0;
+}
