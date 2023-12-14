@@ -66,22 +66,76 @@ document.addEventListener("DOMContentLoaded", function () {
     const filterButtons = document.querySelectorAll(".filter-button");
     const portfolioItems = document.querySelectorAll(".portfolio-item");
 
+    const originalOrder = Array.from(portfolioItems);
+
     filterButtons.forEach((button) => {
         button.addEventListener("click", () => {
             const filterValue = button.getAttribute("data-filter");
 
-            portfolioItems.forEach((item, index) => {
+            const visibleItems = [];
+            const hiddenItems = [];
+
+            portfolioItems.forEach((item) => {
                 const itemClasses = item.className.split(" ");
                 const shouldShowItem = filterValue === "all" || itemClasses.includes(filterValue);
 
-                // Toggle the hidden class based on the filter
-                item.classList.toggle("hidden", !shouldShowItem);
-                item.style.opacity = shouldShowItem ? 1 : 0;
-                item.style.pointerEvents = shouldShowItem ? "auto" : "none";
+                if (shouldShowItem) {
+                    visibleItems.push(item);
+                } else {
+                    hiddenItems.push(item);
+                }
+
+                fadeElement(item, shouldShowItem);
+            });
+
+            // Sort and update the container with visible items first, then hidden items
+            const container = document.getElementById("portfolio-items");
+            container.innerHTML = "";
+
+            visibleItems.sort((a, b) => {
+                const orderA = originalOrder.indexOf(a);
+                const orderB = originalOrder.indexOf(b);
+                return orderA - orderB;
+            });
+
+            visibleItems.forEach((item) => {
+                container.appendChild(item);
+            });
+
+            hiddenItems.forEach((item) => {
+                container.appendChild(item);
             });
         });
     });
+
+    function fadeElement(element, shouldShow) {
+        let opacity = shouldShow ? 1 : 0;
+        let interval;
+
+        // Increase or decrease opacity smoothly
+        interval = setInterval(() => {
+            element.style.opacity = opacity.toFixed(2);
+            opacity = shouldShow ? opacity + 0.1 : opacity - 0.1;
+
+            if ((shouldShow && opacity > 1) || (!shouldShow && opacity < 0)) {
+                clearInterval(interval);
+
+                // Set final opacity to avoid rounding issues
+                element.style.opacity = shouldShow ? 1 : 0;
+
+                // Set pointer events based on visibility
+                element.style.pointerEvents = shouldShow ? "auto" : "none";
+
+                // Toggle the 'hidden' class
+                element.classList.toggle("hidden", !shouldShow);
+            }
+        }, 50); // Adjust the interval based on your preference
+    }
 });
+
+
+
+
 
 
 
