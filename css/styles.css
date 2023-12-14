@@ -11245,37 +11245,54 @@ body {
 .projects-section .page-section-heading.bs-teal {
   color: #64a19d;
 }
-.image-container { 
-  position: relative; 
-} 
- 
-.image-overlay { 
-  position: absolute; 
-  top: 0; 
-  left: 0; 
-  width: 100%; 
-  height: 100%; 
-  background-color: rgba(0, 0, 0, 0.5); 
-  opacity: 0; 
-  transition: opacity 0.5s ease-in-out; 
-  pointer-events: none; 
-} 
- 
-.image-container:hover .image-overlay { 
-  opacity: 1; 
-  pointer-events: auto; 
-} 
- 
+
+.portfolio-item img {
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure box-sizing is consistent */
+.image-container,
+.image-overlay {
+  box-sizing: border-box;
+  position: relative;
+}
+
+.portfolio-item img {
+  max-width: 100%; /* Ensure the image is responsive */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove any default inline spacing */
+  margin: 0 auto; /* Center the image horizontally within its container */
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: auto;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .image-overlay p {
   color: white;
-  text-align: center; /* Center the text horizontally */
   font-size: 20px;
   padding: 20px;
-  position: absolute;
-  top: 50%; /* Center the text vertically */
-  left: 50%;
-  transform: translate(-50%, -50%); /* Center the text both horizontally and vertically */
 }
+
+/* Optional: Adjust the hover effect if necessary */
+.image-container:hover .image-overlay {
+  opacity: 1;
+}
+
 .services {
   background-color: black;
   color: white;
@@ -11383,10 +11400,12 @@ body {
 .about-section h2.page-section-heading.bs-teal {
   color: #65a19d;
 }
+
 .portfolio-item {
   opacity: 1;
   transform: scale(1); /* Initial scale for fade-in effect */
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  overflow: hidden;
 }
 
 .portfolio-item.hidden {
