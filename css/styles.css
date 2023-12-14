@@ -11383,15 +11383,3 @@ body {
 .about-section h2.page-section-heading.bs-teal {
   color: #65a19d;
 }
-.portfolio-item {
-  transition: opacity 0.3s ease-in-out;
-}
-
-.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-/* Add this to your CSS file */
-.portfolio-item.hidden {
-  display: none;
-}
