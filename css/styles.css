@@ -4217,7 +4217,7 @@ textarea.form-control-lg {
   --bs-navbar-brand-color: #121212 !important;
   --bs-navbar-brand-hover-color: #121212 !important;
   --bs-navbar-toggler-border-color: rgba(12, 12, 12, 0.1) !important;
-  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2812, 12, 12, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 .card {
@@ -11382,4 +11382,12 @@ body {
 }
 .about-section h2.page-section-heading.bs-teal {
   color: #65a19d;
+}
+.portfolio-item {
+  transition: opacity 0.3s ease-in-out; /* Optional: Add a transition effect for smoother visibility changes */
+}
+
+.portfolio-item.d-none {
+  opacity: 0;
+  pointer-events: none; /* Optional: Disable interactions with hidden items */
 }

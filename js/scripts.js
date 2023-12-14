@@ -61,4 +61,28 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+    // Portfolio Filtering Script
+    document.addEventListener("DOMContentLoaded", function () {
+        const filterButtons = document.querySelectorAll(".filter-button");
+        const portfolioItems = document.querySelectorAll(".portfolio-item");
+    
+        filterButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                const category = this.getAttribute("data-filter");
+    
+                // Toggle "hidden" class based on the category
+                portfolioItems.forEach(function (item) {
+                    const itemCategories = item.getAttribute("data-category").split(" ");
+                    const shouldShow = category === "all" || itemCategories.includes(category);
+    
+                    if (shouldShow) {
+                        item.classList.remove("d-none");
+                    } else {
+                        item.classList.add("d-none");
+                    }
+                });
+            });
+        });
+    });
+      
 });
