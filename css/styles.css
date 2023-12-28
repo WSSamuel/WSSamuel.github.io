@@ -13095,61 +13095,69 @@ body {
   color: #64a19d;
 }
 
-/* Ensure box-sizing is consistent */
-.image-container,
-.image-overlay {
-  box-sizing: border-box;
+/* Container for the portfolio item */
+.portfolio-item {
   position: relative;
+  overflow: hidden;
 }
 
+/* Style for the image inside the container */
 .portfolio-item img {
-  width: 420px;
-  height: 250px;
+  width: 100%;
+  height: 300px;
+  /* Set a fixed height */
   object-fit: cover;
   display: block;
-  margin: 0 auto;
+  transition: transform 0.3s ease-in-out;
 }
 
+/* Overlay container */
 .image-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  /* Make the overlay responsive */
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-  pointer-events: auto;
-  box-sizing: border-box;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-}
-
-.image-overlay p {
   color: white;
-  font-size: 20px;
-  padding: 20px;
+  transition: opacity 0.5s ease-in-out;
 }
 
-.image-container:hover .image-overlay {
+/* Caption text */
+.image-overlay p.title {
+  font-size: 24px;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+/* Description text */
+.image-overlay p.description {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Hover effect for the container */
+.portfolio-item:hover img {
+  transform: scale(1.1);
+}
+
+.portfolio-item:hover .image-overlay {
   opacity: 1;
 }
 
+/* Media query for smaller screens */
 @media screen and (max-width: 1000px) {
   .portfolio-item img {
-    width: 100%;
-    height: auto;
-  }
-
-  .image-overlay {
-    width: 100%;
-    height: 100%;
+    height: 300px;
+    transform: none;
   }
 }
-
 
 .services {
   background-color: black;
