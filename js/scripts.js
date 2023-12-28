@@ -50,7 +50,7 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         });
     });
-    
+
     // Add modal code here
     const icons = document.querySelectorAll('.icon');
 
@@ -65,11 +65,15 @@ window.addEventListener('DOMContentLoaded', event => {
 document.addEventListener("DOMContentLoaded", function () {
     const filterButtons = document.querySelectorAll(".filter-button");
     const portfolioItems = document.querySelectorAll(".portfolio-item");
-
     const originalOrder = Array.from(portfolioItems);
+
+    let animationFrame;
+    let isAnimating = false;
 
     filterButtons.forEach((button) => {
         button.addEventListener("click", () => {
+            if (isAnimating) return; // Do nothing if an animation is already in progress
+
             const filterValue = button.getAttribute("data-filter");
 
             const visibleItems = [];
@@ -88,7 +92,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 fadeElement(item, shouldShowItem);
             });
 
-            // Sort and update the container with visible items first, then hidden items
             const container = document.getElementById("portfolio-items");
             container.innerHTML = "";
 
@@ -109,38 +112,39 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function fadeElement(element, shouldShow) {
+        isAnimating = true; // Set the flag to indicate that an animation is in progress
+
         let opacity = shouldShow ? 0 : 1;
-        let interval;
-    
-        // Increase or decrease opacity more rapidly
-        interval = setInterval(() => {
+
+        function animate() {
             element.style.opacity = opacity.toFixed(2);
-            opacity = shouldShow ? opacity + 0.2 : opacity - 0.2; // Adjust the increment for faster fading
-    
+            opacity = shouldShow ? opacity + 0.05 : opacity - 0.05;
+
             if ((shouldShow && opacity >= 1) || (!shouldShow && opacity <= 0)) {
-                clearInterval(interval);
-    
-                // Set final opacity to avoid rounding issues
                 element.style.opacity = shouldShow ? 1 : 0;
-    
-                // Set pointer events based on visibility
                 element.style.pointerEvents = shouldShow ? "auto" : "none";
-    
-                // Toggle the 'hidden' class
                 element.classList.toggle("hidden", !shouldShow);
-    
-                // Set final height based on visibility (immediate for fade-in, delayed for fade-out)
+
                 if (shouldShow) {
                     element.style.height = "auto";
                 } else {
                     setTimeout(() => {
                         element.style.height = "0";
-                    }, 300); // Adjust the delay based on your preference
+                    }, 300);
                 }
+
+                isAnimating = false; // Reset the flag after the animation completes
+                return;
             }
-        }, 20); // Adjust the interval based on your preference for faster fading
+
+            animationFrame = requestAnimationFrame(animate);
+        }
+
+        animate();
     }
 });
+
+
 
 
 

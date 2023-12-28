@@ -13283,18 +13283,14 @@ body {
 
 .portfolio-item {
   opacity: 1;
-  transform: scale(1);
-  /* Initial scale for fade-in effect */
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-  overflow: hidden;
-  position: relative;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .portfolio-item.hidden {
   opacity: 0;
-  transform: scale(0);
-  /* Scale down for fade-out effect */
   pointer-events: none;
+  height: 0;
+  overflow: hidden;
 }
 
 .caption {
