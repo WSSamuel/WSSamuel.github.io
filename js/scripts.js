@@ -158,6 +158,10 @@ const observer = new IntersectionObserver((entries) => {
 const hiddenElements = document.querySelectorAll('.hide-item');
 hiddenElements.forEach((el) => observer.observe(el));
 
+$(window).on('load', function () {
+    $('.loader-wrapper').delay(500).fadeOut(1000);
+});
+
 
 
 
